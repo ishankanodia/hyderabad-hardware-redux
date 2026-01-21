@@ -97,12 +97,12 @@ export const Footer = () => {
               <li className="flex items-center space-x-3">
                 <Instagram className="w-4 h-4 text-primary flex-shrink-0" />
                 <a
-                  href="https://www.instagram.com/hyderabadhardware/"
+                  href="https://www.instagram.com/hyderabad.hardware/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
-                  @hyderabadhardware
+                  @hyderabad.hardware
                 </a>
               </li>
             </ul>
