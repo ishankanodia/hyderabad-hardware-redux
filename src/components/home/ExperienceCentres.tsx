@@ -12,7 +12,7 @@ const centres = [
     features: ['BLUMOTION soft-close', 'SERVO-DRIVE electrical systems', 'LEGRABOX drawer systems', 'TIP-ON mechanical opening'],
     image: blumImage,
     link: '/blum',
-    floor: 'Ground Floor',
+    floor: 'First Floor',
   },
   {
     name: 'Astronea Experience Centre',
@@ -20,7 +20,7 @@ const centres = [
     features: ['Designer walk-in systems', 'Sliding wardrobe mechanisms', 'Premium aluminum profiles', 'Luxury finish options'],
     image: wardrobeImage,
     link: '/astronea',
-    floor: 'First Floor',
+    floor: 'Third Floor',
   },
 ];
 
