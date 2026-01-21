@@ -146,7 +146,7 @@ const Contact = () => {
                     <div>
                       <h3 className="font-medium text-foreground mb-1">Follow Us</h3>
                       <a
-                        href="https://www.instagram.com/hyderabadhardware/"
+                        href="https://www.instagram.com/hyderabad.hardware/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-muted-foreground hover:text-primary transition-colors"
