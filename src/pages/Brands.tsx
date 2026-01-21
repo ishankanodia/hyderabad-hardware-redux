@@ -4,6 +4,14 @@ import { SectionTitle } from '@/components/ui/SectionTitle';
 import { Link } from 'react-router-dom';
 import { ArrowRight, ExternalLink } from 'lucide-react';
 
+import hettichLogo from '@/assets/logos/hettich.png';
+import saliceLogo from '@/assets/logos/salice.avif';
+import grassLogo from '@/assets/logos/grass.jpg';
+import dorsetLogo from '@/assets/logos/dorset.jpg';
+import labachaLogo from '@/assets/logos/labacha.jpg';
+import blumLogo from '@/assets/logos/blum.png';
+import astroneaLogo from '@/assets/logos/astronea.png';
+
 const brands = [
   {
     name: 'Hettich',
@@ -12,6 +20,7 @@ const brands = [
     categories: ['Drawer Systems', 'Hinges', 'Sliding Door Hardware', 'Organizational Systems'],
     origin: 'Germany',
     website: 'https://www.hettich.com',
+    logo: hettichLogo,
   },
   {
     name: 'Salice',
@@ -20,6 +29,7 @@ const brands = [
     categories: ['Hinge Systems', 'Lift Systems', 'Drawer Runners', 'Sliding Systems'],
     origin: 'Italy',
     website: 'https://www.salice.com',
+    logo: saliceLogo,
   },
   {
     name: 'Grass',
@@ -28,6 +38,7 @@ const brands = [
     categories: ['Drawer Systems', 'Hinges', 'Flap Systems', 'Organizational Systems'],
     origin: 'Austria',
     website: 'https://www.grass.eu',
+    logo: grassLogo,
   },
   {
     name: 'Dorset',
@@ -36,6 +47,7 @@ const brands = [
     categories: ['Door Handles', 'Cabinet Hardware', 'Locks & Security', 'Architectural Fittings'],
     origin: 'India',
     website: 'https://www.dorsetkaba.com',
+    logo: dorsetLogo,
   },
   {
     name: 'Labacha',
@@ -44,9 +56,9 @@ const brands = [
     categories: ['Furniture Fittings', 'Cabinet Hardware', 'Storage Solutions', 'Accessories'],
     origin: 'India',
     website: '#',
+    logo: labachaLogo,
   },
 ];
-
 const Brands = () => {
   return (
     <Layout>
@@ -85,8 +97,15 @@ const Brands = () => {
                 viewport={{ once: true }}
                 className="p-8 md:p-12 bg-card border border-border rounded-sm hover:border-primary/30 transition-all duration-300"
               >
-                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
-                  <div className="space-y-4 lg:max-w-2xl">
+                <div className="flex flex-col lg:flex-row lg:items-start gap-8">
+                  <div className="flex-shrink-0 w-32 h-20 bg-white rounded-sm flex items-center justify-center p-4">
+                    <img 
+                      src={brand.logo} 
+                      alt={`${brand.name} logo`}
+                      className="max-h-full max-w-full object-contain"
+                    />
+                  </div>
+                  <div className="space-y-4 flex-1">
                     <div className="flex items-center gap-4">
                       <h2 className="text-3xl md:text-4xl font-serif font-medium text-foreground">
                         {brand.name}
@@ -147,6 +166,9 @@ const Brands = () => {
                 to="/blum"
                 className="block p-8 bg-secondary/50 border border-border rounded-sm hover:border-primary/50 transition-all duration-300 text-center"
               >
+                <div className="mb-4 h-16 flex items-center justify-center">
+                  <img src={blumLogo} alt="Blum logo" className="max-h-full w-auto object-contain" />
+                </div>
                 <h3 className="text-2xl font-serif font-medium text-foreground mb-2">
                   Blum Experience Centre
                 </h3>
@@ -169,6 +191,9 @@ const Brands = () => {
                 to="/astronea"
                 className="block p-8 bg-secondary/50 border border-border rounded-sm hover:border-primary/50 transition-all duration-300 text-center"
               >
+                <div className="mb-4 h-16 flex items-center justify-center">
+                  <img src={astroneaLogo} alt="Astronea logo" className="max-h-full w-auto object-contain" />
+                </div>
                 <h3 className="text-2xl font-serif font-medium text-foreground mb-2">
                   Astronea Experience Centre
                 </h3>
