@@ -58,7 +58,7 @@ const Astronea = () => {
             className="max-w-2xl"
           >
             <span className="text-primary text-sm font-medium tracking-widest uppercase">
-              Experience Centre • First Floor
+              Experience Centre • Third Floor
             </span>
             <h1 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-foreground leading-tight">
               Astronea Experience{' '}
@@ -219,7 +219,7 @@ const Astronea = () => {
             <SectionTitle
               subtitle="Experience Centre"
               title={<>Visit Our Astronea <span className="text-gradient-metal">Showroom</span></>}
-              description="Located on the first floor of Hyderabad Hardware, our Astronea Experience Centre showcases the finest Italian wardrobe systems."
+              description="Located on the third floor of Hyderabad Hardware, our Astronea Experience Centre showcases the finest Italian wardrobe systems."
             />
             <motion.div
               initial={{ opacity: 0, y: 20 }}

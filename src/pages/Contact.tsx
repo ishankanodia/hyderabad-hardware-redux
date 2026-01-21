@@ -164,8 +164,8 @@ const Contact = () => {
                   Experience Centres at Our Location
                 </h3>
                 <ul className="space-y-2 text-muted-foreground">
-                  <li>• <strong className="text-foreground">Blum Experience Centre</strong> — Ground Floor</li>
-                  <li>• <strong className="text-foreground">Astronea Experience Centre</strong> — First Floor</li>
+                  <li>• <strong className="text-foreground">Blum Experience Centre</strong> — First Floor</li>
+                  <li>• <strong className="text-foreground">Astronea Experience Centre</strong> — Third Floor</li>
                 </ul>
               </div>
             </motion.div>

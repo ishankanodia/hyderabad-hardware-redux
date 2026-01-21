@@ -70,7 +70,7 @@ const Blum = () => {
             className="max-w-2xl"
           >
             <span className="text-primary text-sm font-medium tracking-widest uppercase">
-              Experience Centre • Ground Floor
+              Experience Centre • First Floor
             </span>
             <h1 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-foreground leading-tight">
               Blum Experience{' '}
@@ -232,7 +232,7 @@ const Blum = () => {
             <SectionTitle
               subtitle="Experience Centre"
               title={<>Visit Our Blum <span className="text-gradient-metal">Showroom</span></>}
-              description="Located on the ground floor of Hyderabad Hardware, our Blum Experience Centre offers hands-on demonstrations and expert guidance."
+              description="Located on the first floor of Hyderabad Hardware, our Blum Experience Centre offers hands-on demonstrations and expert guidance."
             />
             <motion.div
               initial={{ opacity: 0, y: 20 }}
