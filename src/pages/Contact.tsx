@@ -133,7 +133,7 @@ const Contact = () => {
                     <div>
                       <h3 className="font-medium text-foreground mb-1">Hours</h3>
                       <p className="text-muted-foreground">
-                        Monday - Saturday: 10:00 AM - 7:00 PM<br />
+                        Monday - Saturday: 10:00 AM - 8:00 PM<br />
                         Sunday: By Appointment
                       </p>
                     </div>
@@ -151,7 +151,7 @@ const Contact = () => {
                         rel="noopener noreferrer"
                         className="text-muted-foreground hover:text-primary transition-colors"
                       >
-                        @hyderabadhardware
+                        @hyderabad.hardware
                       </a>
                     </div>
                   </div>
@@ -274,7 +274,7 @@ const Contact = () => {
             className="mt-12 aspect-[16/9] md:aspect-[21/9] overflow-hidden rounded-sm border border-border"
           >
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3807.0558024459894!2d78.44073731534694!3d17.41239888806539!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb97e0c8e5a4b5%3A0x2b4b4b4b4b4b4b4b!2sSrinagar%20Colony%2C%20Hyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d121813.39931525792!2d78.35156214925104!3d17.427678457243807!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb91c99d358607%3A0x7dc08bc3baee5c7d!2sHyderabad%20Hardware!5e0!3m2!1sen!2sin!4v1769109831016!5m2!1sen!2sin"
               width="100%"
               height="100%"
               style={{ border: 0, filter: 'grayscale(100%) contrast(1.1)' }}
