@@ -69,7 +69,7 @@ export const Footer = () => {
               <li className="flex items-start space-x-3">
                 <MapPin className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
                 <span className="text-sm text-muted-foreground">
-                  Sai Avenue, 198 & 199, Kamalapuri Colony,<br />
+                  Sai Avenue, 198 & 199, Kamalapuri Colony,
                   Srinagar Colony Main Road, Hyderabad – 500073
                 </span>
               </li>
