@@ -82,7 +82,7 @@ const Blum = () => {
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
               <Link
-                to="/contact"
+                to="/contact#map"
                 className="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground font-medium rounded-sm hover:bg-champagne-dark transition-all duration-300"
               >
                 Visit Centre
@@ -241,7 +241,7 @@ const Blum = () => {
               className="mt-8"
             >
               <Link
-                to="/contact"
+                to="/contact#map"
                 className="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground font-medium rounded-sm hover:bg-champagne-dark transition-all duration-300"
               >
                 Get Directions

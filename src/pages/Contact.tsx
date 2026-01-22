@@ -260,7 +260,7 @@ const Contact = () => {
       </section>
 
       {/* Map */}
-      <section className="py-24 bg-card">
+      <section id="map" className="py-24 bg-card">
         <div className="container mx-auto px-6">
           <SectionTitle
             subtitle="Find Us"

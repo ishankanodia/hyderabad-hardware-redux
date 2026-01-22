@@ -49,7 +49,7 @@ export const CTASection = () => {
             className="mt-10 flex flex-col sm:flex-row justify-center gap-4"
           >
             <Link
-              to="/contact"
+              to="/contact#map"
               className="group inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground font-medium rounded-sm hover:bg-champagne-dark transition-all duration-300"
             >
               Get Directions
