@@ -4,7 +4,7 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
-  base: "/hyderabad-hardware-redux/", // 👈 ADD THIS LINE
+  base: "/", // 👈 ADD THIS LINE
 
   server: {
     host: "::",
