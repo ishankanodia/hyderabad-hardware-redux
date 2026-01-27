@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Layout } from '@/components/layout/Layout';
 import { SectionTitle } from '@/components/ui/SectionTitle';
 import { Award, Users, Target, Heart } from 'lucide-react';
-import showroomImage from '@/assets/showroom.jpg';
+import { StorySlider } from '@/components/ui/StorySlider';
 
 const values = [
   {
@@ -46,8 +46,8 @@ const About = () => {
               <span className="text-gradient-metal">Interior Solutions</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-2xl">
-              Hyderabad Hardware has established itself as the premier destination for premium 
-              architectural and furniture hardware in Hyderabad, serving homeowners, architects, 
+              Hyderabad Hardware has established itself as the premier destination for premium
+              architectural and furniture hardware in Hyderabad, serving homeowners, architects,
               and interior designers with excellence.
             </p>
           </motion.div>
@@ -58,20 +58,18 @@ const About = () => {
       <section className="py-24">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            
+            {/* LEFT: SLIDING IMAGES */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               className="relative"
             >
-              <img
-                src={showroomImage}
-                alt="Hyderabad Hardware Showroom"
-                className="w-full rounded-sm"
-              />
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/10 rounded-sm -z-10" />
+              <StorySlider />
             </motion.div>
 
+            {/* RIGHT: TEXT */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -86,22 +84,23 @@ const About = () => {
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  What began as a vision to bring world-class hardware to Hyderabad has grown 
-                  into a comprehensive solution centre for interior hardware needs. Our showroom 
+                  What began as a vision to bring world-class hardware to Hyderabad has grown
+                  into a comprehensive solution centre for interior hardware needs. Our showroom
                   in Srinagar Colony stands as a testament to our commitment to quality.
                 </p>
                 <p>
-                  We don't just sell hardware – we provide complete solutions. Our team understands 
-                  that the right hinges, drawer systems, and fittings can transform furniture from 
+                  We don't just sell hardware – we provide complete solutions. Our team understands
+                  that the right hinges, drawer systems, and fittings can transform furniture from
                   functional to exceptional.
                 </p>
                 <p>
-                  With dedicated experience centres for Blum and Astronea under the same roof, 
-                  we offer an unparalleled opportunity to explore, compare, and choose the perfect 
+                  With dedicated experience centres for Blum and Astronea under the same roof,
+                  we offer an unparalleled opportunity to explore, compare, and choose the perfect
                   hardware for any project.
                 </p>
               </div>
             </motion.div>
+
           </div>
         </div>
       </section>
@@ -163,9 +162,15 @@ const About = () => {
                   transition={{ delay: index * 0.1 }}
                   className="text-center"
                 >
-                  <span className="text-5xl font-serif font-light text-primary/30">{item.number}</span>
-                  <h3 className="mt-2 text-lg font-serif font-medium text-foreground">{item.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">{item.text}</p>
+                  <span className="text-5xl font-serif font-light text-primary/30">
+                    {item.number}
+                  </span>
+                  <h3 className="mt-2 text-lg font-serif font-medium text-foreground">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    {item.text}
+                  </p>
                 </motion.div>
               ))}
             </div>
