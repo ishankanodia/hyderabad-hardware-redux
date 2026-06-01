@@ -1,18 +1,67 @@
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Award, Users, Building } from 'lucide-react';
-import heroImage from '@/assets/hero-kitchen.jpg';
+import fallbackHeroImage from '@/assets/showroom.jpg';
+
+const heroImageModules = import.meta.glob('../../assets/hero/*.{jpg,jpeg,png,webp,avif}', {
+  eager: true,
+  import: 'default',
+}) as Record<string, string>;
+
+const formatImageAlt = (path: string) => {
+  const fileName = path.split('/').pop()?.replace(/\.[^.]+$/, '') ?? 'hero image';
+
+  return fileName
+    .replace(/[-_]+/g, ' ')
+    .replace(/\b\w/g, (letter) => letter.toUpperCase());
+};
+
+const loadedHeroSlides = Object.entries(heroImageModules)
+  .sort(([firstPath], [secondPath]) => firstPath.localeCompare(secondPath, undefined, { numeric: true }))
+  .map(([path, image]) => ({
+    image,
+    alt: formatImageAlt(path),
+  }));
+
+const heroSlides = loadedHeroSlides.length
+  ? loadedHeroSlides
+  : [{ image: fallbackHeroImage, alt: 'Hyderabad Hardware showroom' }];
 
 export const HeroSection = () => {
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  useEffect(() => {
+    if (heroSlides.length <= 1) {
+      return;
+    }
+
+    const interval = window.setInterval(() => {
+      setActiveSlide((current) => (current + 1) % heroSlides.length);
+    }, 4500);
+
+    return () => window.clearInterval(interval);
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
+      {/* Background Images */}
       <div className="absolute inset-0">
-        <img
-          src={heroImage}
-          alt="Premium kitchen interior with high-end hardware"
-          className="w-full h-full object-cover"
-        />
+        <motion.div
+          className="flex h-full"
+          animate={{ x: `-${activeSlide * 100}%` }}
+          transition={{ duration: 1, ease: 'easeInOut' }}
+        >
+          {heroSlides.map((slide) => (
+            <div key={slide.image} className="min-w-full h-full">
+              <img
+                src={slide.image}
+                alt={slide.alt}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          ))}
+        </motion.div>
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/70" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/50" />
       </div>
@@ -95,6 +144,22 @@ export const HeroSection = () => {
           ))}
         </motion.div>
       </div>
+
+      {heroSlides.length > 1 && (
+        <div className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 gap-3">
+          {heroSlides.map((slide, index) => (
+            <button
+              key={slide.image}
+              type="button"
+              onClick={() => setActiveSlide(index)}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                activeSlide === index ? 'w-10 bg-primary' : 'w-4 bg-foreground/30 hover:bg-foreground/60'
+              }`}
+              aria-label={`Show hero image ${index + 1}`}
+            />
+          ))}
+        </div>
+      )}
     </section>
   );
 };
