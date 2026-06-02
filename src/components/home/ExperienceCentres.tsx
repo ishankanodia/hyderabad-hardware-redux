@@ -24,6 +24,8 @@ const centres = [
   },
 ];
 
+const MotionLink = motion(Link);
+
 export const ExperienceCentres = () => {
   return (
     <section className="py-24 md:py-32">
@@ -38,16 +40,21 @@ export const ExperienceCentres = () => {
           {centres.map((centre, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -36 : 36, y: 24 }}
+              whileInView={{ opacity: 1, x: 0, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.2 }}
+              transition={{ delay: index * 0.2, duration: 0.65, ease: 'easeOut' }}
               className={`grid grid-cols-1 lg:grid-cols-2 gap-8 items-center ${
                 index % 2 === 1 ? 'lg:flex-row-reverse' : ''
               }`}
             >
               <div className={`${index % 2 === 1 ? 'lg:order-2' : ''}`}>
-                <Link to={centre.link} className="group block relative overflow-hidden rounded-sm aspect-[4/3]">
+                <MotionLink
+                  to={centre.link}
+                  className="group block relative overflow-hidden rounded-sm aspect-[4/3]"
+                  whileHover={{ scale: 0.985 }}
+                  transition={{ type: 'spring', stiffness: 260, damping: 24 }}
+                >
                   <img
                     src={centre.image}
                     alt={centre.name}
@@ -59,10 +66,16 @@ export const ExperienceCentres = () => {
                       Explore Centre <ArrowRight className="ml-2 w-4 h-4" />
                     </span>
                   </div>
-                </Link>
+                </MotionLink>
               </div>
 
-              <div className={`space-y-6 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
+              <motion.div
+                initial={{ opacity: 0, x: index % 2 === 0 ? 36 : -36 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.2 + 0.15, duration: 0.65, ease: 'easeOut' }}
+                className={`space-y-6 ${index % 2 === 1 ? 'lg:order-1' : ''}`}
+              >
                 <span className="text-sm text-primary font-medium tracking-wider uppercase">
                   {centre.floor}
                 </span>
@@ -86,7 +99,7 @@ export const ExperienceCentres = () => {
                 >
                   Learn More <ArrowRight className="w-4 h-4" />
                 </Link>
-              </div>
+              </motion.div>
             </motion.div>
           ))}
         </div>

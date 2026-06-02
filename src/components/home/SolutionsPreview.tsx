@@ -34,6 +34,8 @@ const solutions = [
   },
 ];
 
+const MotionLink = motion(Link);
+
 export const SolutionsPreview = () => {
   return (
     <section className="py-24 md:py-32">
@@ -53,9 +55,11 @@ export const SolutionsPreview = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
             >
-              <Link
+              <MotionLink
                 to={solution.link}
                 className="group relative block h-80 md:h-96 overflow-hidden rounded-sm"
+                whileHover={{ y: -6 }}
+                transition={{ type: 'spring', stiffness: 260, damping: 22 }}
               >
                 <img
                   src={solution.image}
@@ -63,6 +67,7 @@ export const SolutionsPreview = () => {
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
+                <div className="absolute inset-0 bg-primary/0 transition-colors duration-500 group-hover:bg-primary/10" />
                 <div className="absolute inset-0 p-8 flex flex-col justify-end">
                   <div className="flex items-start justify-between">
                     <div>
@@ -73,12 +78,12 @@ export const SolutionsPreview = () => {
                         {solution.description}
                       </p>
                     </div>
-                    <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center group-hover:bg-primary transition-colors">
+                    <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center transition-all duration-300 group-hover:bg-primary group-hover:translate-x-1 group-hover:-translate-y-1">
                       <ArrowUpRight className="w-5 h-5 text-primary group-hover:text-primary-foreground transition-colors" />
                     </div>
                   </div>
                 </div>
-              </Link>
+              </MotionLink>
             </motion.div>
           ))}
         </div>

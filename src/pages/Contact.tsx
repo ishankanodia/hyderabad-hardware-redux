@@ -100,8 +100,8 @@ const Contact = () => {
                   Visit Our Showroom
                 </h2>
                 <div className="space-y-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <div className="group flex items-start gap-4 rounded-sm p-3 -m-3 transition-colors duration-300 hover:bg-primary/5">
+                    <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-primary/20 group-hover:shadow-[0_0_24px_hsl(var(--primary)/0.2)]">
                       <MapPin className="w-5 h-5 text-primary" />
                     </div>
                     <div>
@@ -115,8 +115,8 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <div className="group flex items-start gap-4 rounded-sm p-3 -m-3 transition-colors duration-300 hover:bg-primary/5">
+                    <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-primary/20 group-hover:shadow-[0_0_24px_hsl(var(--primary)/0.2)]">
                       <Phone className="w-5 h-5 text-primary" />
                     </div>
                     <div>
@@ -133,8 +133,8 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <div className="group flex items-start gap-4 rounded-sm p-3 -m-3 transition-colors duration-300 hover:bg-primary/5">
+                    <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-primary/20 group-hover:shadow-[0_0_24px_hsl(var(--primary)/0.2)]">
                       <Mail className="w-5 h-5 text-primary" />
                     </div>
                     <div>
@@ -151,8 +151,8 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <div className="group flex items-start gap-4 rounded-sm p-3 -m-3 transition-colors duration-300 hover:bg-primary/5">
+                    <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-primary/20 group-hover:shadow-[0_0_24px_hsl(var(--primary)/0.2)]">
                       <Clock className="w-5 h-5 text-primary" />
                     </div>
                     <div>
@@ -164,8 +164,8 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <div className="group flex items-start gap-4 rounded-sm p-3 -m-3 transition-colors duration-300 hover:bg-primary/5">
+                    <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-primary/20 group-hover:shadow-[0_0_24px_hsl(var(--primary)/0.2)]">
                       <Instagram className="w-5 h-5 text-primary" />
                     </div>
                     <div>
@@ -200,6 +200,8 @@ const Contact = () => {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
+              whileHover={{ y: -4 }}
+              transition={{ type: 'spring', stiffness: 240, damping: 24 }}
             >
               <div className="p-8 bg-card border border-border rounded-sm">
                 <h2 className="text-2xl font-serif font-medium text-foreground mb-6">

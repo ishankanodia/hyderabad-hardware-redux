@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Award, Users, Building } from 'lucide-react';
 import fallbackHeroImage from '@/assets/showroom.jpg';
@@ -28,6 +28,43 @@ const heroSlides = loadedHeroSlides.length
   ? loadedHeroSlides
   : [{ image: fallbackHeroImage, alt: 'Hyderabad Hardware showroom' }];
 
+const CountUpValue = ({ value }: { value: string }) => {
+  const ref = useRef<HTMLParagraphElement>(null);
+  const isInView = useInView(ref, { once: true, margin: '-80px' });
+  const target = Number.parseInt(value, 10);
+  const suffix = value.replace(String(target), '');
+  const [displayValue, setDisplayValue] = useState(0);
+
+  useEffect(() => {
+    if (!isInView || Number.isNaN(target)) {
+      return;
+    }
+
+    let frame = 0;
+    const totalFrames = 70;
+    const easeOut = (progress: number) => 1 - Math.pow(1 - progress, 3);
+
+    const tick = () => {
+      frame += 1;
+      const progress = Math.min(frame / totalFrames, 1);
+      setDisplayValue(Math.round(target * easeOut(progress)));
+
+      if (progress < 1) {
+        window.requestAnimationFrame(tick);
+      }
+    };
+
+    const animationFrame = window.requestAnimationFrame(tick);
+    return () => window.cancelAnimationFrame(animationFrame);
+  }, [isInView, target]);
+
+  return (
+    <p ref={ref} className="text-2xl font-serif font-semibold text-foreground">
+      {displayValue}{suffix}
+    </p>
+  );
+};
+
 export const HeroSection = () => {
   const [activeSlide, setActiveSlide] = useState(0);
 
@@ -52,18 +89,27 @@ export const HeroSection = () => {
           animate={{ x: `-${activeSlide * 100}%` }}
           transition={{ duration: 1, ease: 'easeInOut' }}
         >
-          {heroSlides.map((slide) => (
+          {heroSlides.map((slide, index) => (
             <div key={slide.image} className="min-w-full h-full">
-              <img
+              <motion.img
                 src={slide.image}
                 alt={slide.alt}
                 className="w-full h-full object-cover"
+                animate={{
+                  scale: activeSlide === index ? 1.08 : 1.03,
+                  x: activeSlide === index ? ['0%', '-1.5%'] : '0%',
+                  y: activeSlide === index ? ['0%', '-1%'] : '0%',
+                }}
+                transition={{
+                  duration: 4.5,
+                  ease: 'easeInOut',
+                }}
               />
             </div>
           ))}
         </motion.div>
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/70" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/50" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/70 to-background/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-background/35" />
       </div>
 
       {/* Content */}
@@ -137,7 +183,7 @@ export const HeroSection = () => {
                 <stat.icon className="w-6 h-6 text-primary" />
               </div>
               <div>
-                <p className="text-2xl font-serif font-semibold text-foreground">{stat.value}</p>
+                <CountUpValue value={stat.value} />
                 <p className="text-sm text-muted-foreground">{stat.label}</p>
               </div>
             </div>

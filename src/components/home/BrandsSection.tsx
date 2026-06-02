@@ -33,13 +33,14 @@ export const BrandsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
+              whileHover={{ y: -8, scale: 1.02 }}
               className="group relative p-6 bg-white border border-border rounded-sm hover:border-primary/50 transition-all duration-300 flex flex-col items-center justify-center aspect-[4/3]"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-sm" />
               <img 
                 src={brand.logo} 
                 alt={`${brand.name} logo`}
-                className="relative max-h-16 w-auto object-contain"
+                className="relative max-h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
               />
               <p className="relative mt-3 text-xs text-muted-foreground text-center">
                 {brand.description}
