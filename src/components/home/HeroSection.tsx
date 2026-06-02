@@ -90,11 +90,11 @@ export const HeroSection = () => {
           transition={{ duration: 1, ease: 'easeInOut' }}
         >
           {heroSlides.map((slide, index) => (
-            <div key={slide.image} className="min-w-full h-full">
+            <div key={slide.image} className="relative min-w-full h-full overflow-hidden">
               <motion.img
                 src={slide.image}
                 alt={slide.alt}
-                className="w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-cover"
                 animate={{
                   scale: activeSlide === index ? 1.08 : 1.03,
                   x: activeSlide === index ? ['0%', '-1.5%'] : '0%',
