@@ -97,6 +97,11 @@ export const FloorNavigator = () => {
                   <Link
                     key={floor.label}
                     to={floor.link}
+                    onClick={() => {
+                      if (floor.link === '/') {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }
+                    }}
                     className="block relative group overflow-hidden"
                   >
                     {/* Interactive Glass Facade Pane Backdrop (4 structural window panes) */}
