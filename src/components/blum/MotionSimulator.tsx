@@ -25,8 +25,8 @@ export const MotionSimulator = () => {
   }, [dragX]);
 
   // Aventos lift arm calculations (side profile)
-  const armEndX = aventosOpen ? 220 + 80 * Math.cos(-60 * Math.PI / 180) : 220;
-  const armEndY = aventosOpen ? 30 + 80 * Math.sin(-60 * Math.PI / 180) : 110;
+  const armEndX = aventosOpen ? 220 + 80 * Math.sin(-60 * Math.PI / 180) : 220;
+  const armEndY = aventosOpen ? 30 + 80 * Math.cos(-60 * Math.PI / 180) : 110;
 
   // Handle Tip-on push sequence
   const handleTiponClick = () => {
