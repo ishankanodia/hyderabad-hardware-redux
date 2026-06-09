@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Layout } from '@/components/layout/Layout';
 import { SectionTitle } from '@/components/ui/SectionTitle';
-import { MapPin, Phone, Mail, Clock, Instagram, Send } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Instagram, Send, ArrowRight, CheckCircle2, X } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
+import pavanPortrait from '@/assets/pavan-kanodia.jpg';
 
 const Contact = () => {
   const { toast } = useToast();
@@ -14,6 +15,7 @@ const Contact = () => {
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -39,6 +41,7 @@ const Contact = () => {
     });
 
     if (response.ok) {
+      setIsSuccess(true);
       toast({
         title: 'Message Sent!',
         description: 'Thank you for contacting us. We will get back to you soon.',
@@ -189,10 +192,12 @@ const Contact = () => {
                   Experience Centres at Our Location
                 </h3>
                 <ul className="space-y-2 text-muted-foreground">
-                  <li>• <strong className="text-foreground">Blum Experience Centre</strong> — First Floor</li>
-                  <li>• <strong className="text-foreground">Astronea Experience Centre</strong> — Third Floor</li>
+                  <li>• <strong className="text-foreground">Blum Experience Centre</strong></li>
+                  <li>• <strong className="text-foreground">Astronea Experience Centre</strong></li>
                 </ul>
               </div>
+
+
             </motion.div>
 
             {/* Contact Form */}
@@ -283,6 +288,45 @@ const Contact = () => {
               </div>
             </motion.div>
           </div>
+
+          {/* Owner Consultation Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-20 max-w-4xl mx-auto"
+          >
+            <div className="relative group p-8 bg-secondary/30 rounded-sm border border-primary/20 shadow-md">
+              <div className="flex flex-col md:flex-row gap-8 items-center">
+                {/* Owner portrait */}
+                <div className="w-24 h-24 rounded-full border border-primary/30 overflow-hidden shrink-0 shadow-lg">
+                  <img src={pavanPortrait} alt="Pavan Kumar Kanodia" className="w-full h-full object-cover" />
+                </div>
+                {/* Details */}
+                <div className="text-center md:text-left space-y-3 flex-1">
+                  <span className="text-xs font-sans font-semibold tracking-wider text-primary uppercase">
+                    Direct Consultation
+                  </span>
+                  <h3 className="text-2xl font-serif font-medium text-foreground leading-tight">
+                    Speak to Our Owner
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    For bulk orders, architect collaborations, or high-end project guidance, connect with Mr. Pavan Kumar Kanodia directly. Mr. Kanodia brings over two decades of expertise to help realize your vision.
+                  </p>
+                  <div className="pt-2">
+                    <a
+                      href="https://wa.me/919849244555?text=Hi%20Mr.%20Pavan%20Kanodia,%20I%20would%20like%20to%20discuss%20a%20premium%20project%20for%20my%20home."
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground font-medium hover:bg-champagne-dark transition-all duration-300 rounded-sm shadow-md text-sm"
+                    >
+                      WhatsApp Owner Directly <ArrowRight className="w-4 h-4" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -313,6 +357,61 @@ const Contact = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Success Modal */}
+      <AnimatePresence>
+        {isSuccess && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsSuccess(false)}
+              className="absolute inset-0 bg-background/80 backdrop-blur-sm"
+            />
+            {/* Modal Box */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+              className="relative w-full max-w-md p-8 bg-card border border-primary/20 rounded-sm shadow-2xl text-center space-y-6 overflow-hidden z-10"
+            >
+              <div className="absolute top-0 right-0 w-[150px] h-[150px] rounded-full bg-primary/5 blur-[50px] pointer-events-none" />
+              
+              <button
+                onClick={() => setIsSuccess(false)}
+                className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              <div className="flex justify-center">
+                <div className="w-16 h-16 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center text-primary shadow-[0_0_24px_rgba(212,163,89,0.2)]">
+                  <CheckCircle2 className="w-10 h-10 stroke-[1.5]" />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <h3 className="text-2xl font-serif font-medium text-foreground">
+                  Thank You!
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Your message has been sent successfully. Our team will review it and get back to you shortly.
+                </p>
+              </div>
+
+              <button
+                onClick={() => setIsSuccess(false)}
+                className="w-full py-3 bg-primary text-primary-foreground font-medium rounded-sm hover:bg-champagne-dark transition-all duration-300 shadow-md text-sm"
+              >
+                Close Window
+              </button>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </Layout>
   );
 };

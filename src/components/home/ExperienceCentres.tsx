@@ -1,30 +1,69 @@
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { SectionTitle } from '@/components/ui/SectionTitle';
-import blumImage from '@/assets/blum-hardware.jpg';
-import wardrobeImage from '@/assets/wardrobe-system.jpg';
+
+// Original Blum showroom photos
+import blumShowroom1 from '@/assets/gallery/blum/SnapInsta.to_516044501_18274081744285464_1399366624858275178_n.jpg';
+import blumShowroom2 from '@/assets/gallery/blum/SnapInsta.to_517481513_18274081732285464_6536202180797321290_n.jpg';
+import blumShowroom3 from '@/assets/gallery/blum/SnapInsta.to_517554622_18274080652285464_6248385139077022061_n.jpg';
+import blumShowroom4 from '@/assets/gallery/blum/SnapInsta.to_518791012_18274080661285464_5236443423534054076_n.jpg';
+
+// Original Astronea showroom photos
+import astroneaShowroom1 from '@/assets/gallery/astronea/SnapInsta.to_519486954_18274753447285464_1663089551989204080_n.jpg';
+import astroneaShowroom2 from '@/assets/gallery/astronea/SnapInsta.to_519696242_18274753468285464_7222188862430394520_n.jpg';
+import astroneaShowroom3 from '@/assets/gallery/astronea/SnapInsta.to_520086356_18274754011285464_5123466851082572691_n.jpg';
+import astroneaShowroom4 from '@/assets/gallery/astronea/SnapInsta.to_520211841_18274754296285464_1268175411395862954_n.jpg';
 
 const centres = [
   {
     name: 'Blum Experience Centre',
     description: 'Discover the world of Blum motion technologies. Experience soft-close systems, lift mechanisms, and innovative drawer solutions that transform everyday furniture use.',
     features: ['BLUMOTION soft-close', 'SERVO-DRIVE electrical systems', 'LEGRABOX drawer systems', 'TIP-ON mechanical opening'],
-    image: blumImage,
+    images: [blumShowroom1, blumShowroom2, blumShowroom3, blumShowroom4],
     link: '/blum',
-    floor: 'First Floor',
+    floor: 'Premium Fittings',
   },
   {
     name: 'Astronea Experience Centre',
     description: 'Explore premium Italian wardrobe concepts featuring designer walk-ins, sliding systems, and luxury aluminum profiles in stunning finishes.',
     features: ['Designer walk-in systems', 'Sliding wardrobe mechanisms', 'Premium aluminum profiles', 'Luxury finish options'],
-    image: wardrobeImage,
+    images: [astroneaShowroom1, astroneaShowroom2, astroneaShowroom3, astroneaShowroom4],
     link: '/astronea',
-    floor: 'Third Floor',
+    floor: 'Italian Wardrobes',
   },
 ];
 
 const MotionLink = motion(Link);
+
+const CardCarousel = ({ images, alt }: { images: string[]; alt: string }) => {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % images.length);
+    }, 4000 + Math.random() * 1000); // Slightly staggered cycles
+    return () => clearInterval(timer);
+  }, [images.length]);
+
+  return (
+    <div className="relative w-full h-full overflow-hidden">
+      <AnimatePresence initial={false}>
+        <motion.img
+          key={index}
+          src={images[index]}
+          alt={alt}
+          initial={{ opacity: 0, scale: 1.03 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.8, ease: 'easeInOut' }}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      </AnimatePresence>
+    </div>
+  );
+};
 
 export const ExperienceCentres = () => {
   return (
@@ -32,7 +71,11 @@ export const ExperienceCentres = () => {
       <div className="container mx-auto px-6">
         <SectionTitle
           subtitle="Dedicated Spaces"
-          title={<>Experience Centres at <span className="text-gradient-metal">Our Location</span></>}
+          title={
+            <>
+              Experience Centres at <span className="text-gradient-metal">Our Location</span>
+            </>
+          }
           description="Visit our dedicated experience centres to explore world-class hardware solutions. Touch, feel, and experience the quality before you decide."
         />
 
@@ -51,17 +94,13 @@ export const ExperienceCentres = () => {
               <div className={`${index % 2 === 1 ? 'lg:order-2' : ''}`}>
                 <MotionLink
                   to={centre.link}
-                  className="group block relative overflow-hidden rounded-sm aspect-[4/3]"
+                  className="group block relative overflow-hidden rounded-sm aspect-[4/3] border border-border"
                   whileHover={{ scale: 0.985 }}
                   transition={{ type: 'spring', stiffness: 260, damping: 24 }}
                 >
-                  <img
-                    src={centre.image}
-                    alt={centre.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <CardCarousel images={centre.images} alt={centre.name} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
+                  <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
                     <span className="inline-flex items-center text-primary font-medium">
                       Explore Centre <ArrowRight className="ml-2 w-4 h-4" />
                     </span>

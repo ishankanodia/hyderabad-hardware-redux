@@ -1,12 +1,13 @@
 import { motion } from 'framer-motion';
 import { Layout } from '@/components/layout/Layout';
 import { SectionTitle } from '@/components/ui/SectionTitle';
-import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { Check, Sparkles } from 'lucide-react';
+
+// Hardware product images
+import kitchenImage from '@/assets/hero-kitchen.jpg';
 import drawerImage from '@/assets/drawer-system.jpg';
 import wardrobeImage from '@/assets/wardrobe-system.jpg';
 import doorImage from '@/assets/door-hardware.jpg';
-import kitchenImage from '@/assets/hero-kitchen.jpg';
 import blumImage from '@/assets/blum-hardware.jpg';
 
 const solutions = [
@@ -20,6 +21,7 @@ const solutions = [
       'Larder unit solutions',
     ],
     image: kitchenImage,
+    brand: 'Blum Experience',
   },
   {
     title: 'Drawer & Runner Systems',
@@ -31,6 +33,7 @@ const solutions = [
       'Inner drawer systems',
     ],
     image: drawerImage,
+    brand: 'Blum Experience',
   },
   {
     title: 'Wardrobe & Storage Systems',
@@ -42,6 +45,7 @@ const solutions = [
       'Pull-out accessories',
     ],
     image: wardrobeImage,
+    brand: 'Astronea Experience',
   },
   {
     title: 'Door Hardware & Locks',
@@ -53,6 +57,7 @@ const solutions = [
       'Premium finish options',
     ],
     image: doorImage,
+    brand: 'Showroom Collection',
   },
   {
     title: 'Furniture Fittings',
@@ -64,30 +69,32 @@ const solutions = [
       'Corner cabinet solutions',
     ],
     image: blumImage,
+    brand: 'Blum & Showroom',
   },
 ];
-
 const Solutions = () => {
+
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative pt-32 pb-20 bg-card">
-        <div className="container mx-auto px-6">
+      <section className="relative pt-36 pb-24 bg-card overflow-hidden">
+        <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-primary/5 blur-[100px] pointer-events-none" />
+        <div className="container mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             className="max-w-3xl"
           >
-            <span className="text-primary text-sm font-medium tracking-widest uppercase">
-              Our Solutions
+            <span className="text-primary text-sm font-medium tracking-widest uppercase flex items-center gap-2">
+              <Sparkles className="w-4 h-4" /> Our Solutions
             </span>
             <h1 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-foreground leading-tight">
               Complete Interior{' '}
               <span className="text-gradient-metal">Hardware Solutions</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-2xl">
-              From kitchens to wardrobes, doors to furniture, we provide comprehensive hardware 
-              solutions that combine world-class quality with exceptional functionality.
+              From kitchens to wardrobes, main entrances to architectural doors — we provide 
+              comprehensive hardware setups that combine world-class quality with exceptional function.
             </p>
           </motion.div>
         </div>
@@ -96,79 +103,61 @@ const Solutions = () => {
       {/* Solutions Grid */}
       <section className="py-24">
         <div className="container mx-auto px-6">
-          <div className="space-y-24">
+          <div className="space-y-28">
             {solutions.map((solution, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
-                  index % 2 === 1 ? 'lg:flex-row-reverse' : ''
-                }`}
+                viewport={{ once: true, margin: '-100px' }}
+                className={`grid grid-cols-1 lg:grid-cols-12 gap-12 items-center`}
               >
-                <div className={`${index % 2 === 1 ? 'lg:order-2' : ''}`}>
-                  <div className="relative overflow-hidden rounded-sm aspect-[4/3]">
+                {/* Image panel */}
+                <div
+                  className={`lg:col-span-6 relative overflow-hidden rounded-md border border-border group ${
+                    index % 2 === 1 ? 'lg:order-2' : ''
+                  }`}
+                >
+                  {/* Photo container */}
+                  <div className="relative aspect-[4/3] overflow-hidden">
                     <img
                       src={solution.image}
                       alt={solution.title}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
+                  {/* Brand tag overlay */}
+                  <span className="absolute top-4 left-4 z-10 px-3 py-1 bg-secondary border border-border text-xs text-primary font-medium tracking-wider rounded-sm shadow-md">
+                    {solution.brand}
+                  </span>
                 </div>
 
-                <div className={`space-y-6 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
+                {/* Content Panel */}
+                <div
+                  className={`lg:col-span-6 space-y-6 ${
+                    index % 2 === 1 ? 'lg:order-1' : ''
+                  }`}
+                >
                   <h2 className="text-3xl md:text-4xl font-serif font-medium text-foreground">
                     {solution.title}
                   </h2>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-muted-foreground leading-relaxed text-base">
                     {solution.description}
                   </p>
-                  <ul className="space-y-3">
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                     {solution.features.map((feature, fIndex) => (
                       <li key={fIndex} className="flex items-center gap-3 text-foreground">
-                        <span className="w-2 h-2 bg-primary rounded-full" />
-                        {feature}
+                        <div className="w-5 h-5 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
+                          <Check className="w-3.5 h-3.5 text-primary" />
+                        </div>
+                        <span className="text-sm">{feature}</span>
                       </li>
                     ))}
                   </ul>
-                  <Link
-                    to="/contact"
-                    className="inline-flex items-center gap-2 text-primary hover:text-champagne-light transition-colors font-medium"
-                  >
-                    Enquire Now <ArrowRight className="w-4 h-4" />
-                  </Link>
                 </div>
               </motion.div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-24 bg-card">
-        <div className="container mx-auto px-6">
-          <div className="max-w-3xl mx-auto text-center">
-            <SectionTitle
-              subtitle="Need Expert Advice?"
-              title={<>Let's Discuss Your <span className="text-gradient-metal">Project</span></>}
-              description="Our team of experts is ready to help you select the perfect hardware solutions for your interior project."
-            />
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="mt-8"
-            >
-              <Link
-                to="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground font-medium rounded-sm hover:bg-champagne-dark transition-all duration-300"
-              >
-                Contact Us Today
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Link>
-            </motion.div>
           </div>
         </div>
       </section>

@@ -3,6 +3,7 @@ import { Layout } from '@/components/layout/Layout';
 import { SectionTitle } from '@/components/ui/SectionTitle';
 import { Award, Users, Target, Heart } from 'lucide-react';
 import { StorySlider } from '@/components/ui/StorySlider';
+import pavanKanodia from '@/assets/pavan-kanodia.jpg';
 
 const values = [
   {
@@ -101,6 +102,69 @@ const About = () => {
               </div>
             </motion.div>
 
+          </div>
+        </div>
+      </section>
+
+      {/* Founder & Owner Section */}
+      <section className="py-24 border-t border-border bg-gradient-to-b from-background to-card/30">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Owner Photo */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:col-span-4 flex justify-center"
+            >
+              <div className="relative group max-w-sm lg:max-w-none">
+                {/* Glowing background border */}
+                <div className="absolute -inset-2 bg-gradient-to-r from-primary/30 to-primary/0 rounded-lg blur-lg opacity-40 group-hover:opacity-60 transition-opacity duration-500" />
+                
+                {/* Photo container */}
+                <div className="relative rounded-lg overflow-hidden border border-primary/30 bg-card p-2 shadow-2xl">
+                  <img
+                    src={pavanKanodia}
+                    alt="Pavan Kumar Kanodia"
+                    className="w-full h-auto object-cover rounded-md grayscale group-hover:grayscale-0 transition-all duration-500 scale-100 group-hover:scale-[1.02]"
+                  />
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Founder's Message Content */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:col-span-8 space-y-6"
+            >
+              <span className="text-primary text-sm font-medium tracking-widest uppercase">
+                Leadership
+              </span>
+              <h2 className="text-3xl md:text-4xl font-serif font-medium text-foreground">
+                A Message from Our Owner
+              </h2>
+              <div className="relative">
+                {/* Giant quotation mark decoration */}
+                <span className="absolute -top-10 -left-6 text-9xl font-serif text-primary/10 select-none pointer-events-none">
+                  “
+                </span>
+                
+                <blockquote className="text-lg md:text-xl font-serif font-light text-foreground/90 italic leading-relaxed relative z-10">
+                  At Hyderabad Hardware, we believe that luxury lies in the details. For over two decades, our mission has been to bridge the gap between premium global craftsmanship and the visionary designs of local architects and homeowners. We don't just sell fittings; we partner in building spaces that stand the test of time.
+                </blockquote>
+              </div>
+              
+              <div className="pt-4 border-t border-border/60">
+                <h4 className="text-lg font-serif font-medium text-foreground">
+                  Pavan Kumar Kanodia
+                </h4>
+                <p className="text-xs text-muted-foreground uppercase tracking-widest mt-0.5">
+                  Owner & Managing Director, Hyderabad Hardware
+                </p>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>

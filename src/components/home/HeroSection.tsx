@@ -174,9 +174,9 @@ export const HeroSection = () => {
           className="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-3xl"
         >
           {[
-            { icon: Award, label: 'Premium Brands', value: '5+' },
+            { icon: Award, label: 'Premium Brands', value: '10+' },
             { icon: Users, label: 'Happy Clients', value: '2000+' },
-            { icon: Building, label: 'Experience Centres', value: '2' },
+            { icon: Building, label: 'Experience Centres', value: '3' },
           ].map((stat, index) => (
             <div key={index} className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center">

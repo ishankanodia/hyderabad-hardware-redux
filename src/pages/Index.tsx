@@ -3,6 +3,8 @@ import { HeroSection } from '@/components/home/HeroSection';
 import { SolutionsPreview } from '@/components/home/SolutionsPreview';
 import { BrandsSection } from '@/components/home/BrandsSection';
 import { ExperienceCentres } from '@/components/home/ExperienceCentres';
+import { FloorNavigator } from '@/components/home/FloorNavigator';
+import { TestimonialsSection } from '@/components/home/TestimonialsSection';
 import { CTASection } from '@/components/home/CTASection';
 
 const Index = () => {
@@ -10,8 +12,10 @@ const Index = () => {
     <Layout>
       <HeroSection />
       <SolutionsPreview />
+      <FloorNavigator />
       <BrandsSection />
       <ExperienceCentres />
+      <TestimonialsSection />
       <CTASection />
     </Layout>
   );

@@ -10,6 +10,7 @@ const navLinks = [
   { name: 'Brands', path: '/brands' },
   { name: 'Blum Experience', path: '/blum' },
   { name: 'Astronea Experience', path: '/astronea' },
+  { name: 'Gallery', path: '/gallery' },
   { name: 'Contact', path: '/contact' },
 ];
 

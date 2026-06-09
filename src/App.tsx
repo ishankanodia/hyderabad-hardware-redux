@@ -12,6 +12,7 @@ import Brands from "./pages/Brands";
 import Blum from "./pages/Blum";
 import Astronea from "./pages/Astronea";
 import Contact from "./pages/Contact";
+import Gallery from "./pages/Gallery";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -41,6 +42,7 @@ const App = () => {
               <Route path="/blum" element={<Blum />} />
               <Route path="/astronea" element={<Astronea />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/gallery" element={<Gallery />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </motion.div>

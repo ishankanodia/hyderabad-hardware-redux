@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { useState, useEffect, useMemo } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Layout } from '@/components/layout/Layout';
 import { SectionTitle } from '@/components/ui/SectionTitle';
 import { Link } from 'react-router-dom';
@@ -6,6 +7,15 @@ import { ArrowRight, Check, MapPin, ExternalLink } from 'lucide-react';
 import blumImage from '@/assets/blum-hardware.jpg';
 import drawerImage from '@/assets/drawer-system.jpg';
 import kitchenImage from '@/assets/hero-kitchen.jpg';
+
+
+// Original Blum showroom photos
+import blumShowroom1 from '@/assets/gallery/blum/SnapInsta.to_516044501_18274081744285464_1399366624858275178_n.jpg';
+import blumShowroom2 from '@/assets/gallery/blum/SnapInsta.to_517481513_18274081732285464_6536202180797321290_n.jpg';
+import blumShowroom3 from '@/assets/gallery/blum/SnapInsta.to_517554622_18274080652285464_6248385139077022061_n.jpg';
+import blumShowroom4 from '@/assets/gallery/blum/SnapInsta.to_518791012_18274080661285464_5236443423534054076_n.jpg';
+import blumShowroom5 from '@/assets/gallery/blum/SnapInsta.to_517282026_18274082239285464_4095917474656510512_n.jpg';
+import blumShowroom6 from '@/assets/gallery/blum/SnapInsta.to_518888708_18274082248285464_2781621912852064702_n.jpg';
 
 const products = [
   {
@@ -50,27 +60,66 @@ const features = [
 ];
 
 const Blum = () => {
+  const bgImages = useMemo(() => [
+    kitchenImage,
+    blumShowroom1,
+    blumShowroom2,
+    blumShowroom3,
+    blumShowroom4,
+  ], []);
+
+  const [currentBg, setCurrentBg] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentBg((prev) => (prev + 1) % bgImages.length);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, [bgImages.length]);
+
   return (
     <Layout>
       {/* Hero */}
       <section className="relative min-h-[70vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
-          <img
-            src={kitchenImage}
-            alt="Blum kitchen hardware"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/95 to-background/60" />
+          <AnimatePresence initial={false}>
+            <motion.img
+              key={currentBg}
+              src={bgImages[currentBg]}
+              alt="Blum experience centre display"
+              initial={{ opacity: 0, scale: 1.03 }}
+              animate={{ opacity: 0.75, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.0, ease: 'easeInOut' }}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          </AnimatePresence>
+          {/* Ambient gradient dim overlay - fades to transparent on the right to show the showroom clearly */}
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-transparent z-10" />
         </div>
 
-        <div className="relative container mx-auto px-6 py-32">
+        <div className="relative z-20 container mx-auto px-6 py-32">
+          {/* Navigation dot indicators */}
+          <div className="absolute bottom-6 left-6 flex gap-2 z-30">
+            {bgImages.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentBg(i)}
+                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                  currentBg === i ? 'bg-primary w-6' : 'bg-muted-foreground/45 hover:bg-muted-foreground'
+                }`}
+                aria-label={`Go to slide ${i + 1}`}
+              />
+            ))}
+          </div>
+
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             className="max-w-2xl"
           >
-            <span className="text-primary text-sm font-medium tracking-widest uppercase">
-              Experience Centre • First Floor
+            <span className="text-primary text-sm font-medium tracking-widest uppercase block mb-6">
+              First Floor Experience Centre
             </span>
             <h1 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-foreground leading-tight">
               Blum Experience{' '}
@@ -191,35 +240,76 @@ const Blum = () => {
       <section className="py-24 bg-card">
         <div className="container mx-auto px-6">
           <SectionTitle
-            subtitle="In Action"
-            title={<>See Blum <span className="text-gradient-metal">Quality</span></>}
+            subtitle="Showroom Showcase"
+            title={<>Explore the Blum <span className="text-gradient-metal">Experience</span></>}
+            description="Take a visual tour through our live kitchen setups and movement mechanism displays."
           />
 
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="mt-12 grid grid-cols-2 md:grid-cols-3 gap-6">
+            {[
+              blumShowroom1,
+              blumShowroom2,
+              blumShowroom3,
+              blumShowroom4,
+              blumShowroom5,
+              blumShowroom6
+            ].map((img, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05, duration: 0.4 }}
+                className="group relative aspect-[4/3] overflow-hidden rounded-sm border border-border"
+              >
+                <img
+                  src={img}
+                  alt={`Blum showroom display ${index + 1}`}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                {/* Subtle gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Video Tour */}
+      <section className="py-24 border-t border-border">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="aspect-[4/3] overflow-hidden rounded-sm"
+              className="lg:col-span-7"
             >
-              <img
-                src={drawerImage}
-                alt="Blum drawer system"
-                className="w-full h-full object-cover"
-              />
+              <div className="relative overflow-hidden rounded-sm border border-border bg-secondary aspect-video">
+                <video
+                  src="/videos/blum-inauguration.mp4"
+                  controls
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </motion.div>
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="aspect-[4/3] overflow-hidden rounded-sm"
+              className="lg:col-span-5 space-y-6"
             >
-              <img
-                src={kitchenImage}
-                alt="Kitchen with Blum hardware"
-                className="w-full h-full object-cover"
-              />
+              <span className="text-primary text-sm font-medium tracking-widest uppercase">
+                Video Walkthrough
+              </span>
+              <h2 className="text-3xl font-serif font-medium text-foreground">
+                Grand Inauguration
+              </h2>
+              <p className="text-muted-foreground leading-relaxed">
+                Watch the highlights from the grand opening of our Blum Experience Centre. 
+                Experience the excitement and explore the state-of-the-art layout designed to help 
+                designers and homeowners visualize premium fittings in context.
+              </p>
             </motion.div>
           </div>
         </div>
@@ -232,7 +322,7 @@ const Blum = () => {
             <SectionTitle
               subtitle="Experience Centre"
               title={<>Visit Our Blum <span className="text-gradient-metal">Showroom</span></>}
-              description="Located on the first floor of Hyderabad Hardware, our Blum Experience Centre offers hands-on demonstrations and expert guidance."
+              description="Located at Hyderabad Hardware, our Blum Experience Centre offers hands-on demonstrations and expert guidance."
             />
             <motion.div
               initial={{ opacity: 0, y: 20 }}

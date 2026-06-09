@@ -25,6 +25,7 @@ export const Footer = () => {
                 { name: 'About Us', path: '/about' },
                 { name: 'Interior Solutions', path: '/solutions' },
                 { name: 'Our Brands', path: '/brands' },
+                { name: 'Gallery', path: '/gallery' },
                 { name: 'Contact', path: '/contact' },
               ].map((link) => (
                 <li key={link.path}>
