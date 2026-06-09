@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Layout } from '@/components/layout/Layout';
 import { SectionTitle } from '@/components/ui/SectionTitle';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Check, MapPin, ExternalLink } from 'lucide-react';
+import { ArrowRight, Check, MapPin, ExternalLink, FileText } from 'lucide-react';
 import wardrobeImage from '@/assets/wardrobe-system.jpg';
 
 
@@ -353,7 +353,7 @@ const Astronea = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="mt-8"
+              className="mt-8 flex flex-col sm:flex-row justify-center gap-4"
             >
               <Link
                 to="/contact#map"
@@ -362,6 +362,14 @@ const Astronea = () => {
                 Get Directions
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
+              <a
+                href="/astronea-brochure.pdf"
+                download="Astronea_Italian_Wardrobes_Brochure.pdf"
+                className="inline-flex items-center justify-center px-8 py-4 border border-primary text-primary font-medium rounded-sm hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+              >
+                Download Brochure
+                <FileText className="ml-2 w-5 h-5" />
+              </a>
             </motion.div>
           </div>
         </div>
