@@ -2,8 +2,8 @@ import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Layout } from '@/components/layout/Layout';
 import { SectionTitle } from '@/components/ui/SectionTitle';
-import { Link } from 'react-router-dom';
 import { ArrowRight, Check, MapPin, ExternalLink, FileText } from 'lucide-react';
+import { WardrobeVisualizer } from '@/components/astronea/WardrobeVisualizer';
 import wardrobeImage from '@/assets/wardrobe-system.jpg';
 
 
@@ -260,6 +260,9 @@ const Astronea = () => {
           </div>
         </div>
       </section>
+
+      {/* Interactive Wardrobe Configurator */}
+      <WardrobeVisualizer />
 
       {/* Gallery */}
       <section className="py-24 bg-card">

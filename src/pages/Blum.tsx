@@ -2,8 +2,8 @@ import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Layout } from '@/components/layout/Layout';
 import { SectionTitle } from '@/components/ui/SectionTitle';
-import { Link } from 'react-router-dom';
 import { ArrowRight, Check, MapPin, ExternalLink } from 'lucide-react';
+import { MotionSimulator } from '@/components/blum/MotionSimulator';
 import blumImage from '@/assets/blum-hardware.jpg';
 import drawerImage from '@/assets/drawer-system.jpg';
 import kitchenImage from '@/assets/hero-kitchen.jpg';
@@ -235,6 +235,9 @@ const Blum = () => {
           </div>
         </div>
       </section>
+
+      {/* Interactive Motion Simulator */}
+      <MotionSimulator />
 
       {/* Gallery */}
       <section className="py-24 bg-card">
