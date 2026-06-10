@@ -5,16 +5,16 @@ import { ArrowRight } from 'lucide-react';
 import { SectionTitle } from '@/components/ui/SectionTitle';
 
 // Original Blum showroom photos
-import blumShowroom1 from '@/assets/gallery/blum/SnapInsta.to_516044501_18274081744285464_1399366624858275178_n.jpg';
-import blumShowroom2 from '@/assets/gallery/blum/SnapInsta.to_517481513_18274081732285464_6536202180797321290_n.jpg';
-import blumShowroom3 from '@/assets/gallery/blum/SnapInsta.to_517554622_18274080652285464_6248385139077022061_n.jpg';
-import blumShowroom4 from '@/assets/gallery/blum/SnapInsta.to_518791012_18274080661285464_5236443423534054076_n.jpg';
+import blumShowroom1 from '@/assets/gallery/blum/blum-showroom-1.jpg';
+import blumShowroom2 from '@/assets/gallery/blum/blum-showroom-3.jpg';
+import blumShowroom3 from '@/assets/gallery/blum/blum-showroom-4.jpg';
+import blumShowroom4 from '@/assets/gallery/blum/blum-showroom-8.jpg';
 
 // Original Astronea showroom photos
-import astroneaShowroom1 from '@/assets/gallery/astronea/SnapInsta.to_519486954_18274753447285464_1663089551989204080_n.jpg';
-import astroneaShowroom2 from '@/assets/gallery/astronea/SnapInsta.to_519696242_18274753468285464_7222188862430394520_n.jpg';
-import astroneaShowroom3 from '@/assets/gallery/astronea/SnapInsta.to_520086356_18274754011285464_5123466851082572691_n.jpg';
-import astroneaShowroom4 from '@/assets/gallery/astronea/SnapInsta.to_520211841_18274754296285464_1268175411395862954_n.jpg';
+import astroneaShowroom1 from '@/assets/gallery/astronea/astronea-showroom-1.jpg';
+import astroneaShowroom2 from '@/assets/gallery/astronea/astronea-showroom-2.jpg';
+import astroneaShowroom3 from '@/assets/gallery/astronea/astronea-showroom-3.jpg';
+import astroneaShowroom4 from '@/assets/gallery/astronea/astronea-showroom-4.jpg';
 
 const centres = [
   {

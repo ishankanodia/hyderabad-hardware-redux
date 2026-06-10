@@ -11,12 +11,12 @@ import kitchenImage from '@/assets/hero-kitchen.jpg';
 
 
 // Original Blum showroom photos
-import blumShowroom1 from '@/assets/gallery/blum/SnapInsta.to_516044501_18274081744285464_1399366624858275178_n.jpg';
-import blumShowroom2 from '@/assets/gallery/blum/SnapInsta.to_517481513_18274081732285464_6536202180797321290_n.jpg';
-import blumShowroom3 from '@/assets/gallery/blum/SnapInsta.to_517554622_18274080652285464_6248385139077022061_n.jpg';
-import blumShowroom4 from '@/assets/gallery/blum/SnapInsta.to_518791012_18274080661285464_5236443423534054076_n.jpg';
-import blumShowroom5 from '@/assets/gallery/blum/SnapInsta.to_517282026_18274082239285464_4095917474656510512_n.jpg';
-import blumShowroom6 from '@/assets/gallery/blum/SnapInsta.to_518888708_18274082248285464_2781621912852064702_n.jpg';
+import blumShowroom1 from '@/assets/gallery/blum/blum-showroom-1.jpg';
+import blumShowroom2 from '@/assets/gallery/blum/blum-showroom-3.jpg';
+import blumShowroom3 from '@/assets/gallery/blum/blum-showroom-4.jpg';
+import blumShowroom4 from '@/assets/gallery/blum/blum-showroom-8.jpg';
+import blumShowroom5 from '@/assets/gallery/blum/blum-showroom-2.jpg';
+import blumShowroom6 from '@/assets/gallery/blum/blum-showroom-9.jpg';
 
 const products = [
   {
