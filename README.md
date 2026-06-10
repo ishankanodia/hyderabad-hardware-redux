@@ -6,7 +6,7 @@ This web application serves as a high-end digital storefront and interactive por
 
 ---
 
-## 🚀 Development & Setup
+## Development & Setup
 
 Follow these steps to run the project locally:
 
