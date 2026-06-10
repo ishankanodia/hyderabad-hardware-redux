@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Award, Users, Building } from 'lucide-react';
 import fallbackHeroImage from '@/assets/showroom.jpg';
 
-const heroImageModules = import.meta.glob('../../assets/hero/*.{jpg,jpeg,png,webp,avif}', {
+const heroImageModules = import.meta.glob('../../assets/gallery/ground/*.{jpg,jpeg,png,webp,avif}', {
   eager: true,
   import: 'default',
 }) as Record<string, string>;

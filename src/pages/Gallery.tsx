@@ -40,10 +40,6 @@ const videoItems = [
 /* ------------------------------------------------------------------ */
 /*  Dynamic image loading via Vite glob                               */
 /* ------------------------------------------------------------------ */
-const heroGlob = import.meta.glob<{ default: string }>(
-  '../assets/hero/*.{jpg,jpeg,png,webp}',
-  { eager: true },
-);
 const groundGlob = import.meta.glob<{ default: string }>(
   '../assets/gallery/ground/*.{jpg,jpeg,png,webp}',
   { eager: true },
@@ -94,7 +90,6 @@ const Gallery = () => {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   /* ---------- Build image arrays ---------------------------------- */
-  const heroImages = useMemo(() => extractImages(heroGlob, 'ground'), []);
   const groundImages = useMemo(() => extractImages(groundGlob, 'ground'), []);
   const blumImages = useMemo(() => extractImages(blumGlob, 'blum'), []);
   const astroneaImages = useMemo(
@@ -116,10 +111,7 @@ const Gallery = () => {
   ], []);
 
   // Use fallback images when corresponding folders are empty
-  const effectiveGroundImages = useMemo(
-    () => (groundImages.length > 0 ? groundImages : heroImages),
-    [groundImages, heroImages],
-  );
+  const effectiveGroundImages = groundImages;
 
   const effectiveBlumImages = useMemo(
     () => (blumImages.length > 0 ? blumImages : blumFallbacks),
