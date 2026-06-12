@@ -291,7 +291,7 @@ const Blum = () => {
             >
               <div className="relative overflow-hidden rounded-sm border border-border bg-secondary aspect-video">
                 <video
-                  src="/videos/blum-design-reverie.mp4"
+                  src="/videos/blum-inauguration.mp4"
                   controls
                   preload="none"
                   className="w-full h-full object-cover"
@@ -308,12 +308,12 @@ const Blum = () => {
                 Video Walkthrough
               </span>
               <h2 className="text-3xl font-serif font-medium text-foreground">
-                Blum Design Reverie
+                Grand Inauguration
               </h2>
               <p className="text-muted-foreground leading-relaxed">
-                Experience the magic of design excellence at Taj Falaknuma Palace, Hyderabad. 
-                Watch highlights from a celebration of luxury, innovation, and Blum's signature 
-                motion technologies that redefine modern living spaces.
+                Watch the highlights from the grand opening of our Blum Experience Centre. 
+                Experience the excitement and explore the state-of-the-art layout designed to help 
+                designers and homeowners visualize premium fittings in context.
               </p>
             </motion.div>
           </div>

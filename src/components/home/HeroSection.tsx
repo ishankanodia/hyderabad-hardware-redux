@@ -19,6 +19,7 @@ const formatImageAlt = (path: string) => {
 
 const loadedHeroSlides = Object.entries(heroImageModules)
   .sort(([firstPath], [secondPath]) => firstPath.localeCompare(secondPath, undefined, { numeric: true }))
+  .filter(([path]) => !path.includes('ground-showroom-2.') && !path.includes('ground-showroom-8.'))
   .map(([path, image]) => ({
     image,
     alt: formatImageAlt(path),
