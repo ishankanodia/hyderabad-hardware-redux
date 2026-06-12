@@ -5,6 +5,7 @@ import { SectionTitle } from '@/components/ui/SectionTitle';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Check, MapPin, ExternalLink, FileText } from 'lucide-react';
 import { WardrobeVisualizer } from '@/components/astronea/WardrobeVisualizer';
+import { BlueprintSlider } from '@/components/ui/BlueprintSlider';
 import wardrobeImage from '@/assets/wardrobe-system.jpg';
 
 
@@ -504,6 +505,15 @@ const Astronea = () => {
           </div>
         </div>
       </section>
+
+      {/* Blueprint Slider Section */}
+      <BlueprintSlider 
+        title="Astronea Closet Structural Layout"
+        subtitle="Architectural Drafting"
+        description="Swipe or hover across the installation view to see the Italian-engineered structural profiles, concealed lighting channels, and sliding track tolerances."
+        image={wardrobeImage}
+        type="astronea"
+      />
 
       {/* CTA */}
       <section className="py-24">

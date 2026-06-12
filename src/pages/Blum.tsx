@@ -5,6 +5,7 @@ import { SectionTitle } from '@/components/ui/SectionTitle';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Check, MapPin, ExternalLink } from 'lucide-react';
 import { MotionSimulator } from '@/components/blum/MotionSimulator';
+import { BlueprintSlider } from '@/components/ui/BlueprintSlider';
 import blumImage from '@/assets/blum-hardware.jpg';
 import kitchenImage from '@/assets/hero-kitchen.jpg';
 
@@ -319,6 +320,15 @@ const Blum = () => {
           </div>
         </div>
       </section>
+
+      {/* Blueprint Slider Section */}
+      <BlueprintSlider 
+        title="From Sketch to Soft-Close Motion" 
+        subtitle="Austrian Lift & Runner Drafting" 
+        description="Interact with the technical blueprint slide to see the Aventos scissor lift parameters, Legrabox double-wall drawer tolerances, and clip-on hinge settings."
+        image={blumImage}
+        type="blum"
+      />
 
       {/* CTA */}
       <section className="py-24">

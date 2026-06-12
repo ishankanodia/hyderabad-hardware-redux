@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Award, Users, Building } from 'lucide-react';
+import { ArrowRight, Award, Users, Building, Sparkles } from 'lucide-react';
 import fallbackHeroImage from '@/assets/showroom.jpg';
+import blumCenterImg from '@/assets/blum-hardware.jpg';
 
 const heroImageModules = import.meta.glob('../../assets/gallery/ground/*.{jpg,jpeg,png,webp,avif}', {
   eager: true,
@@ -109,20 +110,20 @@ export const HeroSection = () => {
             </div>
           ))}
         </motion.div>
-        <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/70 to-background/40" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-background/35" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/70 to-background/40 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-background/35 z-10" />
       </div>
 
       {/* Content */}
-      <div className="relative container mx-auto px-6 pt-32 pb-20">
+      <div className="relative container mx-auto px-6 pt-32 pb-20 z-20">
         <div className="max-w-3xl">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="inline-block text-primary text-sm font-medium tracking-widest uppercase mb-6"
+            className="inline-block text-primary text-sm font-medium tracking-widest uppercase mb-6 flex items-center gap-2"
           >
-            Premium Interior Solutions
+            <Sparkles className="w-4 h-4 text-primary animate-pulse" /> Premium Interior Solutions
           </motion.span>
 
           <motion.h1
@@ -153,13 +154,13 @@ export const HeroSection = () => {
           >
             <Link
               to="/solutions"
-              className="group inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground font-medium rounded-sm hover:bg-champagne-dark transition-all duration-300"
+              className="group inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground font-medium rounded-sm hover:bg-champagne-dark transition-all duration-300 shadow-[0_4px_20px_rgba(212,163,89,0.2)]"
             >
               Explore Solutions
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
-              to="/contact#map"
+              to="/contact"
               className="inline-flex items-center justify-center px-8 py-4 border border-primary text-primary font-medium rounded-sm hover:bg-primary hover:text-primary-foreground transition-all duration-300"
             >
               Visit Our Showroom
@@ -179,7 +180,7 @@ export const HeroSection = () => {
             { icon: Users, label: 'Happy Clients', value: '2000+' },
             { icon: Building, label: 'Experience Centres', value: '3' },
           ].map((stat, index) => (
-            <div key={index} className="flex items-center gap-4">
+            <div key={index} className="flex items-center gap-4 bg-[#07080c]/30 border border-border/40 p-4 rounded-sm backdrop-blur-sm">
               <div className="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center">
                 <stat.icon className="w-6 h-6 text-primary" />
               </div>
