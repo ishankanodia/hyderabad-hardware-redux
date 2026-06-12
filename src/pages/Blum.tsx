@@ -6,17 +6,18 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Check, MapPin, ExternalLink } from 'lucide-react';
 import { MotionSimulator } from '@/components/blum/MotionSimulator';
 import blumImage from '@/assets/blum-hardware.jpg';
-import drawerImage from '@/assets/drawer-system.jpg';
 import kitchenImage from '@/assets/hero-kitchen.jpg';
-
 
 // Original Blum showroom photos
 import blumShowroom1 from '@/assets/gallery/blum/blum-showroom-1.jpg';
-import blumShowroom2 from '@/assets/gallery/blum/blum-showroom-3.jpg';
-import blumShowroom3 from '@/assets/gallery/blum/blum-showroom-4.jpg';
-import blumShowroom4 from '@/assets/gallery/blum/blum-showroom-8.jpg';
-import blumShowroom5 from '@/assets/gallery/blum/blum-showroom-2.jpg';
-import blumShowroom6 from '@/assets/gallery/blum/blum-showroom-9.jpg';
+import blumShowroom2 from '@/assets/gallery/blum/blum-showroom-2.jpg';
+import blumShowroom3 from '@/assets/gallery/blum/blum-showroom-3.jpg';
+import blumShowroom4 from '@/assets/gallery/blum/blum-showroom-4.jpg';
+import blumShowroom5 from '@/assets/gallery/blum/blum-showroom-5.jpg';
+import blumShowroom6 from '@/assets/gallery/blum/blum-showroom-6.jpg';
+import blumShowroom7 from '@/assets/gallery/blum/blum-showroom-7.jpg';
+import blumShowroom8 from '@/assets/gallery/blum/blum-showroom-8.jpg';
+import blumShowroom9 from '@/assets/gallery/blum/blum-showroom-9.jpg';
 
 const products = [
   {
@@ -251,12 +252,11 @@ const Blum = () => {
 
           <div className="mt-12 grid grid-cols-2 md:grid-cols-3 gap-6">
             {[
-              blumShowroom1,
-              blumShowroom2,
-              blumShowroom3,
-              blumShowroom4,
               blumShowroom5,
-              blumShowroom6
+              blumShowroom6,
+              blumShowroom7,
+              blumShowroom8,
+              blumShowroom9
             ].map((img, index) => (
               <motion.div
                 key={index}
@@ -291,8 +291,9 @@ const Blum = () => {
             >
               <div className="relative overflow-hidden rounded-sm border border-border bg-secondary aspect-video">
                 <video
-                  src="/videos/blum-inauguration.mp4"
+                  src="/videos/blum-design-reverie.mp4"
                   controls
+                  preload="none"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -307,12 +308,12 @@ const Blum = () => {
                 Video Walkthrough
               </span>
               <h2 className="text-3xl font-serif font-medium text-foreground">
-                Grand Inauguration
+                Blum Design Reverie
               </h2>
               <p className="text-muted-foreground leading-relaxed">
-                Watch the highlights from the grand opening of our Blum Experience Centre. 
-                Experience the excitement and explore the state-of-the-art layout designed to help 
-                designers and homeowners visualize premium fittings in context.
+                Experience the magic of design excellence at Taj Falaknuma Palace, Hyderabad. 
+                Watch highlights from a celebration of luxury, innovation, and Blum's signature 
+                motion technologies that redefine modern living spaces.
               </p>
             </motion.div>
           </div>

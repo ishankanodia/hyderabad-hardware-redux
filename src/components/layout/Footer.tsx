@@ -13,7 +13,7 @@ export const Footer = () => {
             </h3>
             <p className="text-muted-foreground text-sm leading-relaxed">
               Premium interior hardware solutions for architects, designers, and homeowners. 
-              Your trusted partner for quality fittings since establishment.
+              Your trusted partner for quality fittings since 2016.
             </p>
           </div>
 

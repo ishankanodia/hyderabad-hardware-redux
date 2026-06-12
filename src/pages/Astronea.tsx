@@ -13,8 +13,11 @@ import astroneaShowroom1 from '@/assets/gallery/astronea/astronea-showroom-1.jpg
 import astroneaShowroom2 from '@/assets/gallery/astronea/astronea-showroom-2.jpg';
 import astroneaShowroom3 from '@/assets/gallery/astronea/astronea-showroom-3.jpg';
 import astroneaShowroom4 from '@/assets/gallery/astronea/astronea-showroom-4.jpg';
-import astroneaShowroom5 from '@/assets/gallery/astronea/astronea-showroom-6.jpg';
-import astroneaShowroom6 from '@/assets/gallery/astronea/astronea-showroom-8.jpg';
+import astroneaShowroom5 from '@/assets/gallery/astronea/astronea-showroom-5.jpg';
+import astroneaShowroom6 from '@/assets/gallery/astronea/astronea-showroom-6.jpg';
+import astroneaShowroom7 from '@/assets/gallery/astronea/astronea-showroom-7.jpg';
+import astroneaShowroom8 from '@/assets/gallery/astronea/astronea-showroom-8.jpg';
+import astroneaShowroom9 from '@/assets/gallery/astronea/astronea-showroom-9.jpg';
 
 const collaboratedBrands = [
   {
@@ -63,6 +66,22 @@ const seriesCategories = {
   electric: [
     { name: 'Blackbird Pocket Auto', type: 'Motorised Pocket', desc: 'Touch-activated motorized pocket sliding system that hides doors silently within walls upon request.' },
     { name: 'Blackbird Synchro Auto', type: 'Motorised Synchro', desc: '2Fix + 2Slide synchronized motorized system that opens multiple panels in opposite directions simultaneously.' }
+  ],
+  folding: [
+    { name: 'Monaco Bi-Fold Series', type: 'Sliding Folding Door', desc: 'Premium bi-folding doors with whisper-quiet top hung guide rails, opening up the entire cabinet space without blocking passageways.' },
+    { name: 'Folding Pocket Series', type: 'Concealed Folding Pocket', desc: 'Dual-folding system that collapses and glides into lateral pockets inside the wardrobe structure, offering complete design cleanlines.' }
+  ],
+  living: [
+    { name: 'Boiseries Panelling', type: 'Wall Panelling', desc: 'Exquisite wall cladding solutions combining fluted real wood veneer panels, premium leather tiles, and anodized gold profile trims.' },
+    { name: 'Modena Console Island', type: 'Console Island', desc: 'Free-standing luxury closet island featuring glass countertops, integrated watch-winders, and velvet-lined jewelry drawer organizers.' }
+  ],
+  crockery: [
+    { name: 'Tuscany Sideboard', type: 'Crockery Series', desc: 'Elegant dining vitrines featuring ultra-slim glass doors, glass shelves on integrated copper conductors, and flush smart LED lighting.' },
+    { name: 'Milan Pocket Bar', type: 'Bar Unit Series', desc: 'Bespoke home bar system with sliding pocket doors that reveal a marble backsplash, stemware holders, and automated pull-out bottle drawers.' }
+  ],
+  bathroom: [
+    { name: 'Aqua Frameless Cubicle', type: 'Shower Cubicle', desc: 'Custom-tailored glass partitions using heavy 10mm tempered glass, water-repellent coating, and solid brass magnetic hinge sets.' },
+    { name: 'Oasis Sliding Enclosure', type: 'Shower Sliding System', desc: 'Sleek inline bathroom partition sliding doors featuring top hung rollers and flush guide tracks for architectural continuity.' }
   ]
 };
 
@@ -118,7 +137,7 @@ const Astronea = () => {
   ], []);
 
   const [currentBg, setCurrentBg] = useState(0);
-  const [activeCategory, setActiveCategory] = useState<'openable' | 'sliding' | 'doors' | 'electric'>('openable');
+  const [activeCategory, setActiveCategory] = useState<'openable' | 'sliding' | 'doors' | 'electric' | 'folding' | 'living' | 'crockery' | 'bathroom'>('openable');
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -300,8 +319,12 @@ const Astronea = () => {
             {[
               { id: 'openable', label: 'Openable Wardrobes' },
               { id: 'sliding', label: 'Sliding Systems' },
+              { id: 'folding', label: 'Sliding Folding' },
               { id: 'doors', label: 'Premium & Partition Doors' },
-              { id: 'electric', label: 'Electric Motorised' }
+              { id: 'electric', label: 'Electric Motorised' },
+              { id: 'crockery', label: 'Crockery & Bar' },
+              { id: 'living', label: 'Wall Panelling & Islands' },
+              { id: 'bathroom', label: 'Shower Cubicles' }
             ].map((tab) => {
               const isActive = activeCategory === tab.id;
               return (
@@ -415,12 +438,11 @@ const Astronea = () => {
 
           <div className="mt-12 grid grid-cols-2 md:grid-cols-3 gap-6">
             {[
-              astroneaShowroom1,
-              astroneaShowroom2,
-              astroneaShowroom3,
-              astroneaShowroom4,
               astroneaShowroom5,
-              astroneaShowroom6
+              astroneaShowroom6,
+              astroneaShowroom7,
+              astroneaShowroom8,
+              astroneaShowroom9
             ].map((img, index) => (
               <motion.div
                 key={index}
