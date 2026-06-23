@@ -38,6 +38,7 @@ React 18 + TypeScript + Vite (SWC via `@vitejs/plugin-react-swc`), Tailwind CSS,
 **Images are auto-discovered via `import.meta.glob`, not hardcoded.** The Gallery (`pages/Gallery.tsx`) and the home hero slideshow (`components/home/HeroSection.tsx`) glob folders under `src/assets/gallery/{ground,blum,astronea}/` and sort numerically by filename. To add/remove showroom photos you just drop/delete files in those folders — no code change. Consequences to respect:
 - Files are sorted with `localeCompare(..., { numeric: true })`, so naming like `ground-showroom-1.jpg ... ground-showroom-12.jpg` controls order.
 - HeroSection hardcodes an exclusion filter (e.g. `ground-showroom-2`, `ground-showroom-8`) to skip portrait/vertical shots that look bad as full-bleed backgrounds. Check that filter when hero images look wrong.
+- The Gallery globs all three folders (`ground`, `blum`, `astronea`) as separate groups; the home `HeroSection` globs only `ground/`.
 - See `src/assets/gallery/README.md` for the intended workflow.
 
 **Videos** are static files in `public/videos/` (referenced by absolute path, and listed manually in `Gallery.tsx`'s `videoItems`). Other static public assets: `favicon.png`, `astronea-brochure.pdf`, `robots.txt`, `CNAME`.
@@ -56,3 +57,4 @@ Custom utilities also live in `index.css` (not Tailwind config): `text-gradient-
 - `build` produces `dist/404.html` as an SPA fallback so deep links (e.g. `/blum`) work on GitHub Pages.
 - There is a duplicate top-level `images/` directory (raw source photos) separate from the `src/assets/` images the app actually bundles; only `src/assets/**` is imported by the app. `scratch/` holds one-off helper scripts (e.g. image-renaming) and is not part of the build.
 - Both `bun.lockb` and `package-lock.json` are committed; the deploy/dev scripts use npm.
+- `vite.config.ts` disables the dev error overlay (`server.hmr.overlay: false`), so build/runtime errors won't surface as a browser overlay during `npm run dev` — watch the terminal instead.

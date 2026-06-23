@@ -2,87 +2,130 @@ import { motion } from 'framer-motion';
 import { Star, ExternalLink } from 'lucide-react';
 import { SectionTitle } from '@/components/ui/SectionTitle';
 
+// Real Google reviews. Cards with `text` render as full quotes; rating-only
+// reviews (no `text`) render as compact star cards. Order is interleaved so
+// quotes and star-only cards mix evenly across the two marquee rows.
 const testimonials = [
   {
-    text: 'Exceptional quality hardware. The Blum products transformed our kitchen completely. Best showroom in Hyderabad.',
-    name: 'Priya Reddy',
-    role: 'Interior Designer',
+    text: 'Good collection with good customer service. Many options to select from. Good discounts with good quality.',
+    name: 'Satish Patel',
+    role: '',
+    rating: 5,
   },
+  { name: 'Rayhan Ulla', role: '', rating: 5 },
+  { name: 'Imran Ansari', role: '', rating: 5 },
   {
-    text: 'One-stop shop for all hardware needs. Their team guided us through every selection perfectly.',
-    name: 'Rajesh Kumar',
-    role: 'Architect',
+    text: 'One of the best showrooms for hardware needs!',
+    name: 'Nikhil Jain',
+    role: 'Local Guide',
+    rating: 5,
   },
+  { name: 'Ramesh Malani', role: '', rating: 4 },
+  { name: 'Narayan Ram', role: '', rating: 5 },
   {
-    text: 'The Astronea wardrobe systems are phenomenal. Smooth operation and premium finish.',
-    name: 'Ananya Sharma',
-    role: 'Homeowner',
+    text: 'Range, pricing, service… satisfied on all counts.',
+    name: 'Balaji Enterprises',
+    role: '',
+    rating: 5,
   },
+  { name: 'Rajan Vishwakarma', role: '', rating: 5 },
+  { name: 'Jagadish Mundada', role: '', rating: 5 },
   {
-    text: "We've been sourcing from Hyderabad Hardware for 3 years. Consistently excellent quality and service.",
-    name: 'Mohammed Irfan',
-    role: 'Contractor',
+    text: 'Excellent collection and wide range of products for selection.',
+    name: 'Golamari Sampath Reddy',
+    role: '',
+    rating: 5,
   },
+  { name: 'Venkatesh Pundla', role: '', rating: 5 },
+  { name: 'Poorna Polisetty', role: '', rating: 4 },
   {
-    text: 'Their Blum Experience Centre is a must-visit. Helped us understand exactly what we needed.',
-    name: 'Kavitha Nair',
-    role: 'Interior Designer',
+    text: 'Nice collection.',
+    name: 'Sampath Kumar',
+    role: 'Local Guide',
+    rating: 4,
   },
+  { name: 'Sridhar Reddy', role: 'Local Guide', rating: 4 },
+  { name: 'Rajshekhar Yadhav', role: 'Local Guide', rating: 5 },
   {
-    text: 'Premium products with knowledgeable staff. They helped design our entire kitchen hardware layout.',
-    name: 'Suresh Patel',
-    role: 'Homeowner',
+    text: 'Nice product.',
+    name: 'Venkata Prasad Guttula',
+    role: '',
+    rating: 5,
   },
+  { name: 'Akkala Babu', role: 'Local Guide', rating: 5 },
+  { name: 'Kranthi Kumar', role: 'Local Guide', rating: 5 },
   {
-    text: 'The wardrobe fittings from Astronea are world-class. Our clients love the soft-close mechanisms.',
-    name: 'Deepa Murthy',
-    role: 'Architect',
+    text: 'Great experience!',
+    name: 'Ishan Kanodia',
+    role: '',
+    rating: 5,
   },
-  {
-    text: 'Best hardware showroom in Hyderabad. The variety and quality is unmatched.',
-    name: 'Vikram Singh',
-    role: 'Builder',
-  },
+  { name: 'Abhishek M', role: '', rating: 5 },
+  { name: 'Mohammed Zubair Sharief', role: '', rating: 5 },
 ];
 
-const row1 = testimonials.slice(0, 4);
-const row2 = testimonials.slice(4, 8);
+const half = Math.ceil(testimonials.length / 2);
+const row1 = testimonials.slice(0, half);
+const row2 = testimonials.slice(half);
 
-const TestimonialCard = ({
-  testimonial,
-}: {
-  testimonial: (typeof testimonials)[number];
-}) => (
-  <div className="w-[340px] sm:w-[380px] shrink-0 bg-card border border-border rounded-sm p-6 hover:border-primary/30 transition-colors duration-300">
-    {/* Stars */}
-    <div className="flex gap-1 mb-4">
-      {Array.from({ length: 5 }).map((_, i) => (
-        <Star
-          key={i}
-          className="w-4 h-4 fill-primary text-primary"
-        />
-      ))}
-    </div>
+type Testimonial = {
+  name: string;
+  role: string;
+  rating: number;
+  text?: string;
+};
 
-    {/* Review Text */}
-    <p className="text-foreground/90 text-sm leading-relaxed line-clamp-3 mb-5">
-      "{testimonial.text}"
-    </p>
-
-    {/* Reviewer */}
-    <div>
-      <p className="font-serif font-medium text-foreground text-base">
-        {testimonial.name}
-      </p>
-      <p className="text-xs text-muted-foreground mt-0.5">
-        {testimonial.role === 'Interior Designer' ||
-        testimonial.role === 'Architect'
-          ? testimonial.role
-          : `${testimonial.role} · via Google Reviews`}
-      </p>
-    </div>
+const Stars = ({ rating }: { rating: number }) => (
+  <div className="flex gap-1">
+    {Array.from({ length: 5 }).map((_, i) => (
+      <Star
+        key={i}
+        className={`w-4 h-4 ${
+          i < rating ? 'fill-primary text-primary' : 'text-muted-foreground/30'
+        }`}
+      />
+    ))}
   </div>
 );
+
+const Reviewer = ({ testimonial }: { testimonial: Testimonial }) => (
+  <div>
+    <p className="font-serif font-medium text-foreground text-base">
+      {testimonial.name}
+    </p>
+    <p className="text-xs text-muted-foreground mt-0.5">
+      {testimonial.role
+        ? `${testimonial.role} · via Google Reviews`
+        : 'via Google Reviews'}
+    </p>
+  </div>
+);
+
+const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
+  // Rating-only review (no written text) → compact star card.
+  if (!testimonial.text) {
+    return (
+      <div className="w-[220px] sm:w-[240px] shrink-0 bg-card border border-border rounded-sm p-6 flex flex-col justify-center gap-4 hover:border-primary/30 transition-colors duration-300">
+        <Stars rating={testimonial.rating} />
+        <Reviewer testimonial={testimonial} />
+      </div>
+    );
+  }
+
+  return (
+    <div className="w-[340px] sm:w-[380px] shrink-0 bg-card border border-border rounded-sm p-6 hover:border-primary/30 transition-colors duration-300">
+      <div className="mb-4">
+        <Stars rating={testimonial.rating} />
+      </div>
+
+      <p className="text-foreground/90 text-sm leading-relaxed line-clamp-3 mb-5">
+        "{testimonial.text}"
+      </p>
+
+      <Reviewer testimonial={testimonial} />
+    </div>
+  );
+};
 
 const marqueeKeyframes = `
   @keyframes marquee-left {
@@ -126,7 +169,7 @@ export const TestimonialsSection = () => {
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary/10 border border-primary/20 text-sm text-primary hover:bg-primary/20 transition-colors duration-300"
           >
             <Star className="w-4 h-4 fill-primary text-primary" />
-            <span className="font-medium">4.8★ on Google Maps</span>
+            <span className="font-medium">4.7★ · 39 Google reviews</span>
             <ExternalLink className="w-3.5 h-3.5" />
           </a>
         </motion.div>

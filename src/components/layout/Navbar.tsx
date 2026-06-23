@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Phone } from 'lucide-react';
+import logo from '@/assets/logos/hyderabad-hardware.png';
 
 const navLinks = [
   { name: 'Home', path: '/' },
@@ -45,6 +46,11 @@ export const Navbar = () => {
         <nav className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
+            <img
+              src={logo}
+              alt="Hyderabad Hardware"
+              className="h-10 w-10 md:h-11 md:w-11 rounded-sm object-contain shrink-0"
+            />
             <span className="text-2xl md:text-3xl font-serif font-semibold text-gradient-metal">
               Hyderabad Hardware
             </span>

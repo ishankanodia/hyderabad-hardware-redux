@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, Instagram } from 'lucide-react';
+import logo from '@/assets/logos/hyderabad-hardware.png';
 
 export const Footer = () => {
   return (
@@ -8,9 +9,16 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="space-y-4">
-            <h3 className="text-2xl font-serif font-semibold text-gradient-metal">
-              Hyderabad Hardware
-            </h3>
+            <div className="flex items-center space-x-3">
+              <img
+                src={logo}
+                alt="Hyderabad Hardware"
+                className="h-10 w-10 rounded-sm object-contain shrink-0"
+              />
+              <h3 className="text-2xl font-serif font-semibold text-gradient-metal">
+                Hyderabad Hardware
+              </h3>
+            </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
               Premium interior hardware solutions for architects, designers, and homeowners. 
               Your trusted partner for quality fittings since 2016.
