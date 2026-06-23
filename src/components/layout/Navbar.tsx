@@ -49,7 +49,7 @@ export const Navbar = () => {
             <img
               src={logo}
               alt="Hyderabad Hardware"
-              className="h-14 w-14 md:h-16 md:w-16 rounded-sm object-contain shrink-0"
+              className="h-14 w-14 md:h-16 md:w-16 ml-2 md:ml-4 rounded-sm object-contain shrink-0"
             />
             <span className="text-2xl md:text-3xl font-serif font-semibold text-gradient-metal">
               Hyderabad Hardware
