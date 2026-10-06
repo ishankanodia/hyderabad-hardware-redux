@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hyderabad Hardware - Premium Interior Solutions Design System */
+
+@layer base {
+  :root {
+    /* Dark architectural palette with warm metal accents */
+    --background: 30 6% 9%;
+    --foreground: 40 15% 92%;
+
+    --card: 30 8% 12%;
+    --card-foreground: 40 15% 92%;
+
+    --popover: 30 8% 12%;
+    --popover-foreground: 40 15% 92%;
+
+    /* Warm brass/champagne gold accent */
+    --primary: 38 45% 55%;
+    --primary-foreground: 30 6% 9%;
+
+    --secondary: 30 8% 18%;
+    --secondary-foreground: 40 15% 92%;
+
+    --muted: 30 6% 16%;
+    --muted-foreground: 30 10% 60%;
+
+    --accent: 38 45% 55%;
+    --accent-foreground: 30 6% 9%;
+
+    --destructive: 0 62.8% 40%;
+    --destructive-foreground: 40 15% 92%;
+
+    --border: 30 10% 20%;
+    --input: 30 10% 20%;
+    --ring: 38 45% 55%;
+
+    --radius: 0.25rem;
+
+    /* Custom brand colors */
+    --champagne: 38 45% 55%;
+    --champagne-light: 38 40% 70%;
+    --champagne-dark: 38 50% 40%;
+    --bronze: 30 40% 35%;
+    --charcoal: 30 6% 9%;
+    --charcoal-light: 30 8% 14%;
+    --warm-white: 40 15% 92%;
+    --warm-gray: 30 10% 60%;
+
+    /* Gradients */
+    --gradient-metal: linear-gradient(135deg, hsl(38 45% 55%) 0%, hsl(30 40% 35%) 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(30 6% 9%) 0%, hsl(30 8% 6%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(30 8% 14%) 0%, hsl(30 8% 10%) 100%);
+    --gradient-hero: linear-gradient(180deg, transparent 0%, hsl(30 6% 9% / 0.8) 50%, hsl(30 6% 9%) 100%);
+
+    /* Shadows */
+    --shadow-glow: 0 0 40px hsl(38 45% 55% / 0.15);
+    --shadow-card: 0 4px 30px hsl(0 0% 0% / 0.3);
+    --shadow-elevated: 0 20px 60px hsl(0 0% 0% / 0.5);
+
+    --sidebar-background: 30 8% 12%;
+    --sidebar-foreground: 40 15% 92%;
+    --sidebar-primary: 38 45% 55%;
+    --sidebar-primary-foreground: 30 6% 9%;
+    --sidebar-accent: 30 8% 18%;
+    --sidebar-accent-foreground: 40 15% 92%;
+    --sidebar-border: 30 10% 20%;
+    --sidebar-ring: 38 45% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html.lenis, html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  .lenis.lenis-smooth iframe {
+    pointer-events: none;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', serif;
+    @apply font-medium tracking-tight;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.3);
+    color: hsl(var(--warm-white));
+  }
+}
+
+@layer utilities {
+  .text-gradient-metal {
+    background: linear-gradient(135deg, hsl(38 45% 65%) 0%, hsl(38 45% 55%) 50%, hsl(30 40% 45%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-texture {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .animate-wa-ping {
+    animation: wa-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  @keyframes wa-ping {
+    0% { transform: scale(1); opacity: 0.4; }
+    75%, 100% { transform: scale(1.6); opacity: 0; }
+  }
+
+  .bg-grid-pattern {
+    background-image: 
+      linear-gradient(to right, rgba(212, 163, 89, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(212, 163, 89, 0.05) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+}
